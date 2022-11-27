@@ -138,14 +138,14 @@ d3.json("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geoj
   
       // This function determines the color of the marker based on the magnitude of the earthquake.
       function getColorEQ(magnitude) {
-        if (magnitude < 5) {
-          return "#ee9c00";
-        }
-        if (magnitude > 5) {
-          return "#ea822c";
-        }
         if (magnitude > 6) {
           return "#ea2c2c";
+        }
+        if (magnitude >= 5) {
+          return "#ea822c";
+        }
+        if (magnitude < 5) {
+          return "#ee9c00";
         }
     
       }
@@ -159,7 +159,7 @@ d3.json("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geoj
         return magnitude * 4;
       }
   
-    });
+  
   
       //Pass data through geoJSON layer
       L.geoJson(data, {
@@ -177,6 +177,8 @@ d3.json("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geoj
         }
         
       }).addTo(majorEQ);
+
+    });
   
       // Add major earthquakes to map
       majorEQ.addTo(map);
